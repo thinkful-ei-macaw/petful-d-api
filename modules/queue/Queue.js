@@ -20,10 +20,10 @@ class Queue {
       this.first = new _Node(value);
     else{
       let n = this.first;
-      while(n._next){
-        n = n._next;
+      while(n.next){
+        n = n.next;
       }
-      n._next = new _Node(value);
+      n.next = new _Node(value);
       this.length++;
     }
 
@@ -62,6 +62,14 @@ class Queue {
     return result;
   }
 
+//   getArray(){
+//     let current = this.first;
+//     let arr=[];
+//     while(current.next !== null){
+//       current=current.next
+//     }
+//     return arr;
+//   }
 }
 
 module.exports = Queue;

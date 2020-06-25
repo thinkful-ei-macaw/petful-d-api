@@ -23,7 +23,12 @@ module.exports = {
     // Return the pets next in line to be adopted.
     return pets.dogs.dequeue();
   },
-
+  getDogArray(){
+    return pets.dogs.all()
+  },
+  getCatArray(){
+    return pets.cats.all()
+  },
   dequeue(type) {
 
     // Remove a pet from the queue.
