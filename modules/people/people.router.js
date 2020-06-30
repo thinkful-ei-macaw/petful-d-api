@@ -13,13 +13,11 @@ router.get('/', (req, res) => {
   return res.status(200).json(people);
 });
 
-router.use(json)
-
-router.post('/',(req, res) => {
+router.post('/', json, (req, res) => {
  
   // Add a new person to the queue.
   const {name}=req.body;
-  console.log(name);
+  
   People.enqueue(name);
   console.log(name);
   return res.status(201).end;
