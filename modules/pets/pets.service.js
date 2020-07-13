@@ -9,21 +9,29 @@ const pets = {
   dogs: new Queue()
 };
 
+
 // store.cats.forEach(cat => pets.cats.enqueue(cat))
-for(let i=0;i<store.cats.length;i++){
-  let cat=store.cats[i];
-  console.log(cat);
-  pets.cats.enqueue(cat);
-}
-store.dogs.forEach(dog => pets.dogs.enqueue(dog))
-console.log(pets.cats.all(),"all");
+function popCats(){
+  for(let i=0;i<store.cats.length;i++){
+    let cat=store.cats[i];
+    pets.cats.enqueue(cat);
+  }}
+popCats();
+function popDogs(){
+  for(let i=0;i<store.dogs.length;i++){
+    let dog=store.dogs[i];
+    pets.dogs.enqueue(dog);
+  }}
+popDogs();
+// store.dogs.forEach(dog => pets.dogs.enqueue(dog))
+
 
 // --------------------
 
 module.exports = {
   getCat() {
     if(!pets.cats.show()){
-      store.cats.forEach(cat => pets.cats.enqueue(cat))
+      popCats();
 
     }
     // Return the pets next in line to be adopted.
@@ -31,7 +39,7 @@ module.exports = {
   },
   getDog() {
     if(!pets.dogs.show()){
-      store.dogs.forEach(dog => pets.dogs.enqueue(dog))
+      popDogs();
 
     }
     // Return the pets next in line to be adopted.
