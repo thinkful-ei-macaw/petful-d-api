@@ -20,6 +20,7 @@ module.exports = {
       store.cats.forEach(cat => pets.cats.enqueue(cat))
 
     }
+    console.log(pets.cats.all(),"all");
     // Return the pets next in line to be adopted.
     return pets.cats.dequeue();
   },
