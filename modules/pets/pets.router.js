@@ -7,26 +7,26 @@ const Pets = require('./pets.service')
 const router = express.Router()
 
 router.get('/dogs', (req, res) => {
-  const dog=Pets.getDog();
+  const dog=Pets.showDog();
   console.log(dog);
   return res.status(200).json(dog);
   // Return all pets currently up for adoption.
 });
 router.get('/cats', (req, res) => {
-  const cat=Pets.getCat();
+  const cat=Pets.showCat();
   return res.status(200).json(cat);
   // Return all pets currently up for adoption.
 });
 
 router.delete('/dogs', json, (req, res) => {
   // Remove a pet from adoption.
-  Pets.dequeue('dog');
+  Pets.getDog('dog');
   return res.status(201).end();
 })
 
 router.delete('/cats', json, (req, res) => {
   // Remove a pet from adoption.
-  Pets.dequeue('cats');
+  Pets.getCat('cat');
   return res.status(201).end();
 })
 

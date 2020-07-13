@@ -31,6 +31,12 @@ module.exports = {
     // Return the pets next in line to be adopted.
     return pets.dogs.dequeue();
   },
+  showCat(){
+    return pets.cats.show()
+  },
+  showDog(){
+    return pets.dogs.show()
+  },
 
   dequeue(type) {
 
