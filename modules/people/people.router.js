@@ -21,7 +21,7 @@ router.post('/', json, (req, res) => {
   
   People.enqueue(name);
   console.log(name);
-  return res.status(201).end;
+  return res.status(201).end();
 });
 
 module.exports = router;
