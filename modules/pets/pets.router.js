@@ -1,21 +1,18 @@
 const express = require('express')
 const json = require('body-parser').json()
 
-
 const Pets = require('./pets.service')
 // const People = require('../people/people.service')
 
 const router = express.Router()
 
 router.get('/dogs', (req, res) => {
-  const dog=Pets.getDogArray()
+  const dog=Pets.getDog();
   return res.status(200).json(dog);
   // Return all pets currently up for adoption.
 });
 router.get('/cats', (req, res) => {
-  
-  const cat=Pets.getCatArray();
-  console.log(cat,"catval")
+  const cat=Pets.getCat();
   return res.status(200).json(cat);
   // Return all pets currently up for adoption.
 });
