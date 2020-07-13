@@ -8,6 +8,7 @@ const router = express.Router()
 
 router.get('/dogs', (req, res) => {
   const dog=Pets.getDog();
+  console.log(dog);
   return res.status(200).json(dog);
   // Return all pets currently up for adoption.
 });
