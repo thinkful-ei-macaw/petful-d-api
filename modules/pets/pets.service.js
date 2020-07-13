@@ -9,7 +9,12 @@ const pets = {
   dogs: new Queue()
 };
 
-store.cats.forEach(cat => pets.cats.enqueue(cat))
+// store.cats.forEach(cat => pets.cats.enqueue(cat))
+for(let i=0;i<store.cats.length;i++){
+  let cat=store.cats[i];
+  console.log(cat);
+  pets.cat.enqueue(cat);
+}
 store.dogs.forEach(dog => pets.dogs.enqueue(dog))
 console.log(pets.cats.all(),"all");
 
