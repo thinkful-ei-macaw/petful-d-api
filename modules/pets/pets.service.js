@@ -35,6 +35,7 @@ module.exports = {
       popCats();
 
     }
+    console.log(pets.cats.all())
     // Return the pets next in line to be adopted.
     return cat
   },
