@@ -2,7 +2,7 @@ const express = require('express')
 const json = require('body-parser').json()
 
 const Pets = require('./pets.service');
-const { people } = require('../../store');
+const people  = require('../people/people.service');
 // const People = require('../people/people.service')
 
 const router = express.Router()
