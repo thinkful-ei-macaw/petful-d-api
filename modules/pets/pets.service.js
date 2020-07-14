@@ -30,20 +30,22 @@ popDogs();
 
 module.exports = {
   getCat() {
+    let cat=pets.cats.dequeue();
     if(!pets.cats.show()){
       popCats();
 
     }
     // Return the pets next in line to be adopted.
-    return pets.cats.dequeue();
+    return cat
   },
   getDog() {
+    let dog=pets.dogs.dequeue()
     if(!pets.dogs.show()){
       popDogs();
 
     }
     // Return the pets next in line to be adopted.
-    return pets.dogs.dequeue();
+    return dog;
   },
   showCat(){
     return pets.cats.show()
