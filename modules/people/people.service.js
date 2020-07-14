@@ -17,11 +17,11 @@ module.exports = {
 
   enqueue(person) {
     // Add a person to the queue.
-    return people.enqueue(person);
+    people.enqueue(person);
   },
 
   dequeue() {
     // Remove a person from the queue.
-    return people.dequeue();
+    people.dequeue();
   }
 }

@@ -9,7 +9,8 @@ const pets = {
   dogs: new Queue()
 };
 
-
+store.cats.forEach((cat) => pets.cats.enqueue(cat));
+store.dogs.forEach((dog) => pets.dogs.enqueue(dog));
 // store.cats.forEach(cat => pets.cats.enqueue(cat))
 function popCats(){
   for(let i=0;i<store.cats.length;i++){
@@ -29,25 +30,18 @@ popDogs();
 // --------------------
 
 module.exports = {
-  getCat() {
-    let cat=pets.cats.dequeue();
-    if(!pets.cats.show()){
-      popCats();
-
-    }
-    console.log(pets.cats.all())
-    // Return the pets next in line to be adopted.
-    return cat
+  getCat(){
+    let cat=pets.cats.show();
+    let adopted=[cat?{cat}:null];
+    return adopted;
   },
-  getDog() {
-    let dog=pets.dogs.dequeue()
-    if(!pets.dogs.show()){
-      popDogs();
+  getDog(){
+    let dog=pets.dogs.show();
+    let adopted=[dog?{dog}:null];
+    return adopted;
 
-    }
-    // Return the pets next in line to be adopted.
-    return dog;
   },
+
   showCat(){
     return pets.cats.show()
   },
