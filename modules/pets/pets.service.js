@@ -54,9 +54,15 @@ module.exports = {
     // Remove a pet from the queue.
     if (type === 'cat') {
       pets.cats.dequeue();
+      if(!pets.cats.all()){
+        popCats();
+      }
     }
     if (type === 'dog') {
       pets.dogs.dequeue();
+      if(!pets.dogs.all()){
+        popDogs();
+      }
     }
   }
 }

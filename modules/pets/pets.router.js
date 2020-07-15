@@ -2,7 +2,7 @@ const express = require('express')
 const json = require('body-parser').json()
 
 const Pets = require('./pets.service');
-const people  = require('../people/people.service');
+// const people  = require('../people/people.service');
 // const People = require('../people/people.service')
 
 const router = express.Router()
@@ -22,11 +22,11 @@ router.get('/cats', (req, res) => {
 router.delete('/dogs', json, (req, res) => {
   if(req.body.type==='dog'){
     Pets.dequeue('dog');
-    people.dequeue();
+    // people.dequeue();
   }
   else{
     Pets.dequeue(req.body.type);
-    people.dequeue();
+    // people.dequeue();
   }
   
   return res.status(204).send();
@@ -35,11 +35,11 @@ router.delete('/dogs', json, (req, res) => {
 router.delete('/cats', json, (req, res) => {
   if(req.body.type==='cat'){
     Pets.dequeue('cat');
-    people.dequeue();
+    // people.dequeue();
   }
   else{
     Pets.dequeue(req.body.type);
-    people.dequeue();
+    // people.dequeue();
   }
   
   return res.status(204).send();

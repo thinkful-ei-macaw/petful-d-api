@@ -10,17 +10,20 @@ router.get('/', (req, res) => {
  
   const people=People.get();
   
-  return res.status(200).json(people||null);
+  return res.status(200).json(people);
 });
 
 router.post('/', json, (req, res) => {
 
-  People.enqueue(req.body.person);
-  res.status(201).send();
+  People.enqueue(req.body.name);
+  const people=People.get();
+
+  res.status(201).json(people);
  
 
 });
 router.delete('/', (req,res)=>{
+  console.log("dequeueing");
   People.dequeue();
   res.status(204).end();
 })
