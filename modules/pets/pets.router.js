@@ -20,27 +20,13 @@ router.get('/cats', (req, res) => {
 });
 
 router.delete('/dogs', json, (req, res) => {
-  if(req.body.type==='dog'){
-    Pets.dequeue('dog');
-    // people.dequeue();
-  }
-  else{
-    Pets.dequeue(req.body.type);
-    // people.dequeue();
-  }
+  Pets.deleteDog();
   
   return res.status(204).send();
 });
 
 router.delete('/cats', json, (req, res) => {
-  if(req.body.type==='cat'){
-    Pets.dequeue('cat');
-    // people.dequeue();
-  }
-  else{
-    Pets.dequeue(req.body.type);
-    // people.dequeue();
-  }
+  Pets.deleteCat();
   
   return res.status(204).send();
 })

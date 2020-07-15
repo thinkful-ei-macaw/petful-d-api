@@ -59,10 +59,26 @@ module.exports = {
       }
     }
     if (type === 'dog') {
+      console.log('dequeuedog');
       pets.dogs.dequeue();
       if(!pets.dogs.all()){
         popDogs();
       }
     }
-  }
+  },
+
+  deleteDog(){
+    console.log('dequeuedog');
+    pets.dogs.dequeue();
+    if(!pets.dogs.all()){
+      popDogs();
+    }
+  },
+  deleteCat(){
+    console.log('dequeuecat');
+    pets.cats.dequeue();
+    if(!pets.cats.all()){
+      popCats();
+    }
+  },
 }
