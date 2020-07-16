@@ -1,69 +1,55 @@
 class _Node {
-  constructor(value){
-    this.value=value;
-    this.next=null;
+  constructor(value) {
+    this.value = value;
+    this.next = null;
   }
 }
 
-
 class Queue {
   constructor() {
-    // Set initial data.
-    this.first=null;
-    this.last=null;
+    this.first = null;
+    this.last = null;
   }
 
-
-  enqueue(value) {
-    // Add some data to the queue.
-    if(this.first === null)
-      this.first = new _Node(value);
-    else{
-      let n = this.first;
-      while(n.next){
-        n = n.next;
-      }
-      n.next = new _Node(value);
-      this.length++;
+  enqueue(item) {
+    const node = new _Node(item);
+    if (this.first === null) {
+      this.first = node;
     }
-
+    if (this.last) {
+      this.last.next = node;
+    }
+    this.last = node;
   }
 
   dequeue() {
-    // Remove some data from the queue.
-    if (!this.first) {
+    if (this.first === null) {
       return;
     }
     const node = this.first;
-    this.first = node.next;
-
+    this.first = this.first.next;
     if (node === this.last) {
       this.last = null;
     }
     return node.value;
   }
-  
 
   show() {
     // Return the next item in the queue.
-    if (this.first !== null) return this.first.value;
-    return null;
+    if (this.first === null) return;
+    return this.first.value;
   }
 
   all() {
     // Return all items in the queue.
-    if (this.first === null) return null;
-    let current = this.first;
-    let result = [current.value];
-    while (current.next !== null) {
-      current = current.next;
-      result.push(current.value);
+    let node = this.first;
+    let arr = [];
+    while (node !== null) {
+      arr.push(node.value);
+      node = node.next;
     }
-    return result;
+    return arr;
   }
-
 }
 
 module.exports = Queue;
-
-

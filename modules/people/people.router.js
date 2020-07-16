@@ -7,25 +7,18 @@ const People = require('./people.service');
 const router = express.Router();
 
 router.get('/', (req, res) => {
- 
-  const people=People.get();
-  
-  return res.status(200).json(people);
+return res.json(People.get());
 });
 
 router.post('/', json, (req, res) => {
 
-  People.enqueue(req.body.name);
-  const people=People.get();
-
-  res.status(201).json(people);
- 
-
+  if (!req.body.Name) {
+    res.status(400, 'Name is required');
+  } else {
+    People.enqueue(req.body.Name);
+    res.status(201).end();
+  }
 });
-router.delete('/', (req,res)=>{
-  console.log("dequeueing");
-  People.dequeue();
-  res.status(204).end();
-})
+
 
 module.exports = router;

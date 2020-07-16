@@ -11,74 +11,26 @@ const pets = {
 
 store.cats.forEach((cat) => pets.cats.enqueue(cat));
 store.dogs.forEach((dog) => pets.dogs.enqueue(dog));
-// store.cats.forEach(cat => pets.cats.enqueue(cat))
-function popCats(){
-  for(let i=0;i<store.cats.length;i++){
-    let cat=store.cats[i];
-    pets.cats.enqueue(cat);
-  }}
-popCats();
-function popDogs(){
-  for(let i=0;i<store.dogs.length;i++){
-    let dog=store.dogs[i];
-    pets.dogs.enqueue(dog);
-  }}
-popDogs();
-// store.dogs.forEach(dog => pets.dogs.enqueue(dog))
-
-
-// --------------------
 
 module.exports = {
-  getCat(){
-    let cat=pets.cats.show();
-    let adopted=[cat?{cat}:null];
-    return adopted;
-  },
-  getDog(){
-    let dog=pets.dogs.show();
-    let adopted=[dog?{dog}:null];
-    return adopted;
-
-  },
-
-  showCat(){
-    return pets.cats.show()
-  },
-  showDog(){
-    return pets.dogs.show()
+  get() {
+    // Return the pets next in line to be adopted.
+    const nextCat = pets.cats.show();
+    const nextDog = pets.dogs.show();
+    return {
+      nextCat,
+      nextDog
+    }
   },
 
   dequeue(type) {
-
     // Remove a pet from the queue.
     if (type === 'cat') {
-      pets.cats.dequeue();
-      if(!pets.cats.all()){
-        popCats();
-      }
+      pets.cats.dequeue();  
     }
+    
     if (type === 'dog') {
-      console.log('dequeuedog');
-      pets.dogs.dequeue();
-      if(!pets.dogs.all()){
-        popDogs();
-      }
-    }
-  },
-
-  deleteDog(){
-    console.log('dequeuedog');
-    pets.dogs.dequeue();
-    if(!pets.dogs.all()){
-      popDogs();
-    }
-  },
-  deleteCat(){
-    console.log('dequeuecat');
-    pets.cats.dequeue();
-    if(!pets.cats.all()){
-      popCats();
-    }
-  },
+      pets.dogs.dequeue()  
+    }    
+  }
 }
