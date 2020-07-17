@@ -6,6 +6,6 @@ link to server repo: https://github.com/thinkful-ei-macaw/petful-d-api.git
 
 link to client repo: https://github.com/thinkful-ei-macaw/petful-d-client.git Partners: Desmond Wareham Tech-Stack: ReactJs NodeJs Express HTML JSX CSS queue, linkedlist heroku API Docs:
 
-REQUEST: https://bref-chocolatine-21548.herokuapp.com/api/people allows user's to be added to the end of the line POST GET DELETE
+REQUEST: https://bref-chocolatine-21548.herokuapp.com/people allows user's to be added to the end of the line POST GET DELETE
 
-REQUEST:https://bref-chocolatine-21548.herokuapp.com/pets/cats || https://bref-chocolatine-21548.herokuapp.com/pets/dogs Shows the two most current animals up for adopiton from the queue GET
+REQUEST:https://bref-chocolatine-21548.herokuapp.com/pets/cat || https://bref-chocolatine-21548.herokuapp.com/pets/dog Shows the two most current animals up for adopiton from the queue GET
