@@ -1,19 +1,31 @@
-const express = require("express");
+require('dotenv').config()
+const express = require('express')
+const cors = require('cors')
 
-const cors = require("cors");
-
-const app = express();
-
-app.use(cors())
-// app.use(
-//   cors({
-//     origin: CLIENT_ORIGIN,
-//   }));
+const { CLIENT_ORIGIN, NODE_ENV } = require('../../config')
+const app = express()
 
 
+app.use(cors({
+  origin: CLIENT_ORIGIN
+}));
 
+// app.use(cors());
 
-app.use("/people", require("../people/people.router"));
-app.use("/pets", require("../pets/pets.router"));
+app.use('/people', require('../people/people.router'))
+app.use('/pets/cat', require('../pets/cats.router'))
+app.use('/pets/dog', require('../pets/dogs.router'))
 
-module.exports=app;
+app.use((error, req, res, next) => {
+  let message
+  if (NODE_ENV === 'production') {
+    message = 'Server error'
+  }
+  else {
+    console.error(error)
+    message = error.message
+  }
+  res.status(500).json(message)
+})
+
+module.exports = app;

@@ -1,24 +1,24 @@
-const express = require('express');
-const json = require('body-parser').json();
+const express = require('express')
+const json = require('body-parser').json()
 
-const People = require('./people.service');
-// const { people } = require('../../store');
-
-const router = express.Router();
+const People = require('./people.service')
+const router = express.Router()
 
 router.get('/', (req, res) => {
-return res.json(People.get());
-});
+  const people = People.get()
+  return res.json(people)
+})
 
 router.post('/', json, (req, res) => {
+  const { person } = req.body
+  People.enqueue(person)
+  return res.json(People.get())
+})
 
-  if (!req.body.Name) {
-    res.status(400, 'Name is required');
-  } else {
-    People.enqueue(req.body.Name);
-    res.status(201).end();
-  }
-});
+router.delete('/', json, (req, res) => {
+  const { person } = req.body
+  People.dequeue(person)
+  return res.json(People.get())
+})
 
-
-module.exports = router;
+module.exports = router
